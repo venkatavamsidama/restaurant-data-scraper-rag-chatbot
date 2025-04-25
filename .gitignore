@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and logs
+.cache/
+.cache_dir/
+diskcache/
+*.log
+*.tmp
+
+# Environment files
+.env
+.env.*
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Python notebooks
+*.ipynb_checkpoints
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Data and artifacts
+data/raw/
+knowledge_base/vector_store/index.faiss
+knowledge_base/vector_store/*.npy
+
+# Selenium downloads and artifacts
+*.crdownload
+selenium-downloads/
+
+# VS Code and IDE config
+.vscode/
+.idea/
+
+# Streamlit config
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# Video recordings (if any)
+*.mp4
+
+# System generated
+*.swp
+*.bak
+*.old
+
+# Pytest cache
+.pytest_cache/
+
+# Build outputs
+build/
+dist/
+*.egg-info/
