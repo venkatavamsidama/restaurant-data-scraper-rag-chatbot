@@ -1,3 +1,12 @@
-dotenv
-diskcache
 selenium
+beautifulsoup4
+diskcache
+python-dotenv
+pandas
+streamlit
+sentence-transformers
+faiss-cpu
+transformers
+torch
+requests
+google-generativeai

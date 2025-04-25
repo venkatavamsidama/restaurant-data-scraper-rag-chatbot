@@ -16,8 +16,8 @@ CACHE_EXPIRE = 30 * 24 * 3600
 
 # LLM Config
 LLM_PROVIDER = os.getenv('LLM_PROVIDER', 'gemini') 
-OPENAI_API_KEY = os.getenv('GEMINI_API_KEY', '')
-LLM_MODEL = os.getenv('LLM_MODEL', 'gemini-pro')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
+LLM_MODEL = os.getenv('LLM_MODEL', 'gemini-2.5-flash-preview-04-17')
 
 # FAISS index paths
 INDEX_FILE = os.path.join(BASE_DIR, 'knowledge_base', 'index.faiss')
