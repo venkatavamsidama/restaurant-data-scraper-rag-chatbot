@@ -19,17 +19,23 @@ def call_llm(prompt: str) -> str:
         print(f"[ERROR] Gemini API failed: {e}")
         raise
 
-
 def organize_html(html: str) -> dict:
     prompt = (
-        "You are a skilled data extraction expert with extensive experience in parsing HTML structures "
-        "to retrieve specific information in a clean and organized format. Your expertise lies in understanding "
-        "HTML semantics and converting them into structured data like JSON, ensuring accuracy and completeness.\n\n"
-        "Your task is to extract restaurant information from the provided HTML, including fields for name, location, "
-        "menu items with price and description, features, hours, and contact details.\n\n"
-        "Please ensure that the extracted data is formatted correctly as a JSON object, including all the specified fields. "
-        "Pay attention to details within the HTML structure to ensure that the data is accurately represented.\n\n"
-        "Example format:\n"
+        "You are a skilled data extraction expert specializing in parsing HTML to JSON structures.\n\n"
+        "Your task is to extract restaurant information from the provided HTML into a STRICT JSON format.\n"
+        "Mandatory fields:\n"
+        "- name (string)\n"
+        "- location (string)\n"
+        "- menu_items (list of objects with item, price, description)\n"
+        "- features (string)\n"
+        "- hours (string)\n"
+        "- contact (string)\n\n"
+        "Important rules:\n"
+        "- Always include ALL fields, even if the data is missing.\n"
+        "- If a field cannot be found, set it as an EMPTY string \"\".\n"
+        "- For menu_items, if no items are found, return an EMPTY list [].\n"
+        "- Maintain correct JSON structure exactly as shown below.\n\n"
+        "Output format:\n"
         "{\n"
         '  "name": "__________",\n'
         '  "location": "__________",\n'
@@ -44,7 +50,8 @@ def organize_html(html: str) -> dict:
         '  "hours": "__________",\n'
         '  "contact": "__________"\n'
         "}\n\n"
-        "HTML content:\n" + html
+        "Extract carefully from the following HTML content:\n\n"
+        + html
     )
 
     try:
@@ -53,6 +60,7 @@ def organize_html(html: str) -> dict:
     except Exception as e:
         print(f"[WARN] Falling back to local extractor for HTML due to error: {e}")
         return extract_fields(html)
+
 
 
 def main():

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Classic Cheeseburger",
+    "price": "\u20b9649",
+    "description": "A juicy beef patty with melted cheddar cheese, lettuce, tomato, and pickles, served on a toasted bun.",
+    "restaurant": "Speedy Bites"
+  },
+  {
+    "name": "Veggie Wrap",
+    "price": "\u20b9549",
+    "description": "A healthy wrap filled with grilled vegetables, hummus, and a light vinaigrette dressing.",
+    "restaurant": "Speedy Bites"
+  },
+  {
+    "name": "Spicy Chicken Wings",
+    "price": "\u20b9799",
+    "description": "Crispy chicken wings tossed in a spicy, tangy buffalo sauce, served with a side of ranch dressing.",
+    "restaurant": "Speedy Bites"
+  },
+  {
+    "name": "Margherita Pizza",
+    "price": "\u20b9899",
+    "description": "A classic pizza topped with fresh mozzarella, basil, and tomato sauce on a thin, crispy crust.",
+    "restaurant": "Speedy Bites"
+  },
+  {
+    "name": "Chocolate Milkshake",
+    "price": "\u20b9399",
+    "description": "A creamy and indulgent milkshake made with rich chocolate ice cream and topped with whipped cream.",
+    "restaurant": "Speedy Bites"
+  },
+  {
+    "name": "Butter Chicken",
+    "price": "\u20b9349",
+    "description": "Tender chicken pieces cooked in a creamy tomato-based sauce with a rich blend of spices, served with naan or rice.",
+    "restaurant": "Royal Tandoor"
+  },
+  {
+    "name": "Paneer Tikka",
+    "price": "\u20b9279",
+    "description": "Marinated paneer cubes grilled to perfection, served with mint chutney and onion rings.",
+    "restaurant": "Royal Tandoor"
+  },
+  {
+    "name": "Chicken Biryani",
+    "price": "\u20b9499",
+    "description": "Aromatic basmati rice layered with spiced chicken, cooked to perfection with saffron and served with raita.",
+    "restaurant": "Royal Tandoor"
+  },
+  {
+    "name": "Aloo Paratha",
+    "price": "\u20b9129",
+    "description": "Whole wheat flatbread stuffed with spiced mashed potatoes, served with yogurt and pickles.",
+    "restaurant": "Royal Tandoor"
+  },
+  {
+    "name": "Mango Lassi",
+    "price": "\u20b9149",
+    "description": "A refreshing yogurt-based drink blended with ripe mangoes, perfect to complement any meal.",
+    "restaurant": "Royal Tandoor"
+  }
+]

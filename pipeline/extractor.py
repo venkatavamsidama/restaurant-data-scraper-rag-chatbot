@@ -1,27 +1,34 @@
+import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 
-def extract_fields(html: str) -> dict:
-    """Fallback extractor if LLM fails."""
-    soup = BeautifulSoup(html, 'html.parser')
-    name = (soup.find('h1') or soup.find('title'))
-    contact = soup.find(string=lambda s: s and ('contact' in s.lower() or 'phone' in s.lower()))
-    address = soup.find(string=lambda s: s and 'address' in s.lower())
-    hours = soup.find(string=lambda s: s and ('hours' in s.lower() or 'open' in s.lower()))
+def extract_fields(base_url: str) -> dict:
+    """Extracts HTML from all pages starting from base_url without JavaScript."""
+    visited = set()
+    all_html = []
 
-    menu_items = []
-    sections = soup.find_all(['ul','div','table'], string=lambda s: s and 'menu' in s.lower())
-    for sec in sections:
-        for item in sec.find_all(['li','td']):
-            text = item.get_text(strip=True)
-            if text:
-                menu_items.append({'item': text, 'price': '', 'desc': ''})
+    def fetch_and_clean(url):
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        for script in soup(['script']):
+            script.extract()
+        return soup
 
-    return {
-        'name': name.get_text(strip=True) if name else '',
-        'location': '',
-        'menu': menu_items,
-        'features': [],
-        'hours': hours.strip() if hours else '',
-        'contact': contact.strip() if contact else '',
-        'address': address.strip() if address else ''
-    }
+    def crawl(url):
+        if url in visited:
+            return
+        visited.add(url)
+        
+        soup = fetch_and_clean(url)
+        all_html.append(soup.prettify())
+        
+        # Find all <a> links
+        for link in soup.find_all('a', href=True):
+            next_url = urljoin(url, link['href'])
+            # Only crawl if it is a valid HTTP(S) URL and not already visited
+            if next_url.startswith('http') and next_url not in visited:
+                crawl(next_url)
+
+    crawl(base_url)
+    
+    return {'full_html': "\n".join(all_html)}
